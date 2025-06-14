@@ -1,8 +1,11 @@
 import React from 'react'
+import {Home} from "./components/Home.jsx";
 
 function App() {
     return (
-        <div>App</div>
+        <main className="relative min-h-screen w-screen overflow-x-hidden">
+            <Home />
+        </main>
     )
 }
 
