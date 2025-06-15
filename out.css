@@ -1,5 +1,5 @@
 /*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */
-@import url("https://fonts.cdnfonts.com/css/general-sans");
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -9,14 +9,19 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-amber-700: oklch(55.5% 0.163 48.998);
-    --color-yellow-300: #EDFF66;
-    --color-blue-900: oklch(37.9% 0.146 265.522);
+    --color-blue-100: #F0F2FA;
     --color-violet-300: #5724FF;
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
     --text-5xl: 3rem;
@@ -25,6 +30,8 @@
     --text-6xl--line-height: 1;
     --text-7xl: 4.5rem;
     --text-7xl--line-height: 1;
+    --text-8xl: 6rem;
+    --text-8xl--line-height: 1;
     --text-9xl: 8rem;
     --text-9xl--line-height: 1;
     --font-weight-black: 900;
@@ -38,9 +45,9 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --font-family-zentry: "zentry", "sans-serif";
-    --font-family-general: "general", "sans-serif";
-    --font-family-circular-web: "circular-web", "sans-serif";
+    --font-family-zentry: "zentry";
+    --font-family-general: "general";
+    --font-family-circular-web: "circular-web";
     --color-blue-75: #DFDFF2;
   }
 }
@@ -205,11 +212,14 @@
   .top-1\/2 {
     top: calc(1/2 * 100%);
   }
-  .right-5 {
-    right: calc(var(--spacing) * 5);
+  .top-90 {
+    top: calc(var(--spacing) * 90);
   }
-  .bottom-5 {
-    bottom: calc(var(--spacing) * 5);
+  .right-110 {
+    right: calc(var(--spacing) * 110);
+  }
+  .bottom-20 {
+    bottom: calc(var(--spacing) * 20);
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
@@ -229,6 +239,12 @@
   .z-50 {
     z-index: 50;
   }
+  .mt-24 {
+    margin-top: calc(var(--spacing) * 24);
+  }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
+  }
   .size-64 {
     width: calc(var(--spacing) * 64);
     height: calc(var(--spacing) * 64);
@@ -237,14 +253,29 @@
     width: 100%;
     height: 100%;
   }
+  .h-32 {
+    height: calc(var(--spacing) * 32);
+  }
   .h-dvh {
     height: 100dvh;
+  }
+  .h-full {
+    height: 100%;
   }
   .min-h-screen {
     min-height: 100vh;
   }
+  .w-32 {
+    width: calc(var(--spacing) * 32);
+  }
+  .w-full {
+    width: 100%;
+  }
   .w-screen {
     width: 100vw;
+  }
+  .max-w-64 {
+    max-width: calc(var(--spacing) * 64);
   }
   .origin-center {
     transform-origin: center;
@@ -269,11 +300,20 @@
     --tw-scale-z: 150%;
     scale: var(--tw-scale-x) var(--tw-scale-y);
   }
+  .scale-500 {
+    --tw-scale-x: 500%;
+    --tw-scale-y: 500%;
+    --tw-scale-z: 500%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+  .scale-900 {
+    --tw-scale-x: 900%;
+    --tw-scale-y: 900%;
+    --tw-scale-z: 900%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .gap-1 {
-    gap: calc(var(--spacing) * 1);
   }
   .overflow-hidden {
     overflow: hidden;
@@ -287,27 +327,29 @@
   .bg-blue-75 {
     background-color: var(--color-blue-75);
   }
-  .bg-blue-900 {
-    background-color: var(--color-blue-900);
-  }
-  .bg-yellow-300 {
-    background-color: var(--color-yellow-300);
-  }
   .object-cover {
     object-fit: cover;
   }
   .object-center {
     object-position: center;
   }
-  .text-center {
-    text-align: center;
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
   }
-  .font-family-zentry {
-    font-family: var(--font-family-zentry);
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
   }
-  .text-5xl {
-    font-size: var(--text-5xl);
-    line-height: var(--tw-leading, var(--text-5xl--line-height));
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+  .text-8xl {
+    font-size: var(--text-8xl);
+    line-height: var(--tw-leading, var(--text-8xl--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
   }
   .text-amber-700 {
     color: var(--color-amber-700);
@@ -315,14 +357,11 @@
   .text-blue-75 {
     color: var(--color-blue-75);
   }
+  .text-blue-100 {
+    color: var(--color-blue-100);
+  }
   .opacity-0 {
     opacity: 0%;
-  }
-  .opacity-75 {
-    opacity: 75%;
-  }
-  .opacity-100 {
-    opacity: 100%;
   }
   .transition-all {
     transition-property: all;
@@ -352,6 +391,91 @@
       @media (hover: hover) {
         opacity: 100%;
       }
+    }
+  }
+  .sm\:h-40 {
+    @media (width >= 40rem) {
+      height: calc(var(--spacing) * 40);
+    }
+  }
+  .sm\:w-40 {
+    @media (width >= 40rem) {
+      width: calc(var(--spacing) * 40);
+    }
+  }
+  .sm\:p-4 {
+    @media (width >= 40rem) {
+      padding: calc(var(--spacing) * 4);
+    }
+  }
+  .sm\:px-10 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 10);
+    }
+  }
+  .sm\:text-9xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-9xl);
+      line-height: var(--tw-leading, var(--text-9xl--line-height));
+    }
+  }
+  .sm\:text-xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+  }
+  .md\:h-48 {
+    @media (width >= 48rem) {
+      height: calc(var(--spacing) * 48);
+    }
+  }
+  .md\:w-48 {
+    @media (width >= 48rem) {
+      width: calc(var(--spacing) * 48);
+    }
+  }
+  .md\:p-6 {
+    @media (width >= 48rem) {
+      padding: calc(var(--spacing) * 6);
+    }
+  }
+  .md\:text-2xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-2xl);
+      line-height: var(--tw-leading, var(--text-2xl--line-height));
+    }
+  }
+  .lg\:h-56 {
+    @media (width >= 64rem) {
+      height: calc(var(--spacing) * 56);
+    }
+  }
+  .lg\:w-56 {
+    @media (width >= 64rem) {
+      width: calc(var(--spacing) * 56);
+    }
+  }
+  .lg\:text-3xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
+    }
+  }
+  .xl\:h-64 {
+    @media (width >= 80rem) {
+      height: calc(var(--spacing) * 64);
+    }
+  }
+  .xl\:w-64 {
+    @media (width >= 80rem) {
+      width: calc(var(--spacing) * 64);
+    }
+  }
+  .xl\:text-4xl {
+    @media (width >= 80rem) {
+      font-size: var(--text-4xl);
+      line-height: var(--tw-leading, var(--text-4xl--line-height));
     }
   }
 }
@@ -500,6 +624,10 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 }
 @layer base {
   @font-face {
+    font-family: 'zentry-regular.woff2';
+    src: url('./fonts/zentry-regular.woff2') format('woff2');
+  }
+  @font-face {
     font-family: 'circularweb-book.woff2';
     src: url('/fonts/circularweb-book.woff2') format('woff2');
   }
@@ -523,6 +651,17 @@ body {
   overflow-x: hidden;
 }
 @layer utilities {
+  .anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .inter-tight-home {
+    font-family: "Inter Tight", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+  }
   .font-ss01 {
     font-feature-settings: "ss01" on;
   }
@@ -584,6 +723,7 @@ body {
   .special-font-family b {
     font-family: var(--font-family-zentry), serif;
     font-feature-settings: "ss01" on;
+    font-size: xx-large;
   }
   .hero-heading {
     font-family: var(--font-family-zentry);

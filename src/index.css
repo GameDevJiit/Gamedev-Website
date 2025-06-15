@@ -1,10 +1,14 @@
-@import url("https://fonts.cdnfonts.com/css/general-sans");
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 @import "tailwindcss/preflight";
 @import "tailwindcss/utilities";
 @tailwind utilities;
 
 @layer base {
+    @font-face {
+        font-family: 'zentry-regular.woff2';
+        src: url('./fonts/zentry-regular.woff2') format('woff2');
+    }
     @font-face {
         font-family: 'circularweb-book.woff2';
         src: url('/fonts/circularweb-book.woff2') format('woff2');
@@ -24,11 +28,11 @@
 }
 
 @theme {
-    --font-family-zentry: "zentry", "sans-serif";
-    --font-family-general: "general", "sans-serif";
-    --font-family-circular-web: "circular-web", "sans-serif";
-    --font-family-robert-medium: "robert-medium", "sans-serif";
-    --font-family-robert-regular: "robert-regular", "sans-serif";
+    --font-family-zentry: "zentry";
+    --font-family-general: "general";
+    --font-family-circular-web: "circular-web";
+    --font-family-robert-medium: "robert-medium";
+    --font-family-robert-regular: "robert-regular";
 
     --color-blue-50: #DFDFF0;
     --color-blue-75: #DFDFF2;
@@ -48,6 +52,19 @@ body {
 }
 
 @layer utilities {
+    .anton-regular {
+        font-family: "Anton", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .inter-tight-home {
+    font-family: "Inter Tight", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
     .font-ss01 {
         font-feature-settings: "ss01" on;
     }
@@ -108,6 +125,7 @@ body {
     .special-font-family b {
         font-family: var(--font-family-zentry), serif;
         font-feature-settings: "ss01" on;
+        font-size: xx-large;
     }
 
     /* Continue using @apply where pseudo-elements are not involved */
