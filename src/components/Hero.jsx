@@ -82,6 +82,28 @@ const Hero = () => {
 
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
+  const getDynamicText = (index, isDark = false) => {
+    const headings = [
+      "TE<b>A</b>M ONSITE",
+      "THE G<b>A</b>ME WITHIN",
+      "CRE<b>A</b>TIVE DEPTH",
+      "<b>G</b>LORY MODE"
+    ];
+
+    const baseClasses = "special-font hero-heading absolute bottom-5 right-5";
+    const colorClasses = isDark ? "text-black" : "z-50 text-blue-75";
+
+    return (
+        <h1
+            key={index}
+            className={`${baseClasses} ${colorClasses}`}
+            dangerouslySetInnerHTML={{ __html: headings[index - 1] }}
+        />
+    );
+  };
+
+
+
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
@@ -140,14 +162,12 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          G<b>A</b>MING
-        </h1>
+        {getDynamicText(currentIndex,false)}
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
             <h1 className="special-font hero-heading text-blue-100">
-              redefi<b>n</b>e
+              unle<b>a</b>sh
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
@@ -163,10 +183,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        G<b>A</b>MING
-      </h1>
+      {getDynamicText(currentIndex,true)}
     </div>
   );
 };
