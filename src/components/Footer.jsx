@@ -1,9 +1,9 @@
 import {FaInstagram,FaLinkedin,FaGithub } from "react-icons/fa";
 
 const socialLinks = [
-  { href: "https://youtube.com", icon: <FaLinkedin /> },
-  { href: "https://discord.com", icon: <FaGithub /> },
-  { href: "https://twitter.com", icon: <FaInstagram/> }
+  { href: "https://www.linkedin.com/in/game-development-hub-jiit/", icon: <FaLinkedin /> },
+  { href: "https://github.com/GameDevJiit", icon: <FaGithub /> },
+  { href: "https://www.instagram.com/gamedev_jiit/", icon: <FaInstagram/> }
 ];
 
 const Footer = () => {
