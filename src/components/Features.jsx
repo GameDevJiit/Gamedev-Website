@@ -116,11 +116,11 @@ const Features = () => (
           src="videos/feature-1.mp4"
           title={
             <>
-              radia<b>n</b>t
+              g<b>a</b>me development
             </>
           }
-          description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
-          isComingSoon
+          description="Building games isn’t just fun—it’s structure, systems, and soul. This is where every click counts, and every bug has a story."
+          isComingSoon = {false}
         />
       </BentoTilt>
 
@@ -130,11 +130,11 @@ const Features = () => (
             src="videos/feature-2.mp4"
             title={
               <>
-                zig<b>m</b>a
+                3D mo<b>d</b>elling
               </>
             }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
-            isComingSoon
+            description="It’s how ideas take shape—vertex by vertex. From low-poly props to cinematic renders, 3D modelling transforms imagination into tangible digital art."
+            isComingSoon = {false}
           />
         </BentoTilt>
 
@@ -143,11 +143,11 @@ const Features = () => (
             src="videos/feature-3.mp4"
             title={
               <>
-                n<b>e</b>xus
+                Digital Design
               </>
             }
-            description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
-            isComingSoon
+            description="From posters to promo reels, we craft the visuals that tell our story. It's where branding meets creativity—and every pixel has a purpose."
+            isComingSoon = {false}
           />
         </BentoTilt>
 
@@ -156,11 +156,11 @@ const Features = () => (
             src="videos/feature-4.mp4"
             title={
               <>
-                az<b>u</b>l
+                Esports <b>A</b>rena
               </>
             }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
-            isComingSoon
+            description="Where Skill Meets Strategy — The Ultimate Esports Battleground Begins Here"
+            isComingSoon = {false}
           />
         </BentoTilt>
 
