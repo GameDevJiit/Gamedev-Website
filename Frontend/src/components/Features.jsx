@@ -99,7 +99,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 const Features = () => (
-  <section className="bg-black pb-52">
+  <section id="features" className="bg-black pb-52">
     <div className="container mx-auto px-3 md:px-10">
       <div className="px-5 py-32">
         <p className="font-circular-web text-lg text-blue-50">
@@ -119,7 +119,7 @@ const Features = () => (
               g<b>a</b>me development
             </>
           }
-          description="Building games isn’t just fun—it’s structure, systems, and soul. This is where every click counts, and every bug has a story."
+          description="Building games isn't just fun—it's structure, systems, and soul. This is where every click counts, and every bug has a story."
           isComingSoon = {false}
         />
       </BentoTilt>
@@ -133,7 +133,7 @@ const Features = () => (
                 3D mo<b>d</b>elling
               </>
             }
-            description="It’s how ideas take shape—vertex by vertex. From low-poly props to cinematic renders, 3D modelling transforms imagination into tangible digital art."
+            description="It's how ideas take shape—vertex by vertex. From low-poly props to cinematic renders, 3D modelling transforms imagination into tangible digital art."
             isComingSoon = {false}
           />
         </BentoTilt>
