@@ -104,10 +104,10 @@ const Home = () => {
 
   const getDynamicText = (index, isDark = false) => {
     const headings = [
+      "TE<b>A</b>M ONSITE",
       "THE G<b>A</b>ME WITHIN",
       "CRE<b>A</b>TIVE DEPTH",
-      "<b>G</b>LORY MODE",
-      "TE<b>A</b>M ONSITE"
+      "<b>G</b>LORY MODE"
     ];
 
     const baseClasses = "special-font hero-heading absolute bottom-5 right-5";
