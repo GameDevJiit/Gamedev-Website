@@ -17,9 +17,27 @@ const Home = () => {
   const [loadedVideos, setLoadedVideos] = useState(0);
   const [showNoRecruits, setShowNoRecruits] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const totalVideos = 4;
   const nextVdRef = useRef(null);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth <= 768;
+
+      setIsMobile(mobileRegex.test(userAgent) || isTouchDevice || isSmallScreen);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1);
@@ -32,14 +50,16 @@ const Home = () => {
   }, [loadedVideos]);
 
   const handleMiniVdClick = () => {
-    setHasClicked(true);
-
-    setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
+    // Only allow clicks if not on mobile
+    if (!isMobile) {
+      setHasClicked(true);
+      setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
+    }
   };
 
   //Join Us
   const handleJoinUS = () => {
-    //will do server thing and if recruits are on then redirect 
+    //will do server thing and if recruits are on then redirect
     setShowNoRecruits(true);
     setIsAnimatingOut(false);
 
@@ -57,7 +77,7 @@ const Home = () => {
 
   useGSAP(
       () => {
-        if (hasClicked) {
+        if (hasClicked && !isMobile) {
           gsap.set("#next-video", { visibility: "visible" });
           gsap.to("#next-video", {
             transformOrigin: "center center",
@@ -77,7 +97,7 @@ const Home = () => {
         }
       },
       {
-        dependencies: [currentIndex],
+        dependencies: [currentIndex, isMobile],
         revertOnUpdate: true,
       }
   );
@@ -140,24 +160,27 @@ const Home = () => {
             className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
         >
           <div>
-            <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
-              <VideoPreview>
-                <div
-                    onClick={handleMiniVdClick}
-                    className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
-                >
-                  <video
-                      ref={nextVdRef}
-                      src={getVideoSrc((currentIndex % totalVideos) + 1)}
-                      loop
-                      muted
-                      id="current-video"
-                      className="size-64 origin-center scale-150 object-cover object-center"
-                      onLoadedData={handleVideoLoad}
-                  />
+            {/* Mini player - only render on desktop */}
+            {!isMobile && (
+                <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
+                  <VideoPreview>
+                    <div
+                        onClick={handleMiniVdClick}
+                        className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
+                    >
+                      <video
+                          ref={nextVdRef}
+                          src={getVideoSrc((currentIndex % totalVideos) + 1)}
+                          loop
+                          muted
+                          id="current-video"
+                          className="size-64 origin-center scale-150 object-cover object-center"
+                          onLoadedData={handleVideoLoad}
+                      />
+                    </div>
+                  </VideoPreview>
                 </div>
-              </VideoPreview>
-            </div>
+            )}
 
             <video
                 ref={nextVdRef}
