@@ -15,6 +15,8 @@ const Home = () => {
 
   const [loading, setLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
+  const [mainVideoLoaded, setMainVideoLoaded] = useState(false);
+  const [allVideosLoaded, setAllVideosLoaded] = useState(false);
   const [showNoRecruits, setShowNoRecruits] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -43,15 +45,28 @@ const Home = () => {
     setLoadedVideos((prev) => prev + 1);
   };
 
+  const handleMainVideoLoad = () => {
+    setMainVideoLoaded(true);
+    setLoadedVideos((prev) => prev + 1);
+  };
+
+  // Hide loading screen when main video is loaded
   useEffect(() => {
-    if (loadedVideos === totalVideos - 1) {
+    if (mainVideoLoaded) {
       setLoading(false);
+    }
+  }, [mainVideoLoaded]);
+
+  // Track when all videos are loaded for mini player
+  useEffect(() => {
+    if (loadedVideos === totalVideos) {
+      setAllVideosLoaded(true);
     }
   }, [loadedVideos]);
 
   const handleMiniVdClick = () => {
-    // Only allow clicks if not on mobile
-    if (!isMobile) {
+    // Only allow clicks if not on mobile AND all videos are loaded
+    if (!isMobile && allVideosLoaded) {
       setHasClicked(true);
       setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
     }
@@ -77,7 +92,7 @@ const Home = () => {
 
   useGSAP(
       () => {
-        if (hasClicked && !isMobile) {
+        if (hasClicked && !isMobile && allVideosLoaded) {
           gsap.set("#next-video", { visibility: "visible" });
           gsap.to("#next-video", {
             transformOrigin: "center center",
@@ -97,7 +112,7 @@ const Home = () => {
         }
       },
       {
-        dependencies: [currentIndex, isMobile],
+        dependencies: [currentIndex, isMobile, allVideosLoaded],
         revertOnUpdate: true,
       }
   );
@@ -160,13 +175,15 @@ const Home = () => {
             className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
         >
           <div>
-            {/* Mini player - only render on desktop */}
+            {/* Mini player - only render on desktop and when all videos are loaded */}
             {!isMobile && (
-                <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
+                <div className={`mask-clip-path absolute-center absolute z-50 size-64 overflow-hidden rounded-lg 
+                  ${allVideosLoaded ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}>
                   <VideoPreview>
                     <div
                         onClick={handleMiniVdClick}
-                        className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
+                        className={`origin-center scale-50 opacity-0 transition-all duration-500 ease-in 
+                          ${allVideosLoaded ? 'hover:scale-100 hover:opacity-100' : ''}`}
                     >
                       <video
                           ref={nextVdRef}
@@ -199,7 +216,7 @@ const Home = () => {
                 loop
                 muted
                 className="absolute left-0 top-0 size-full object-cover object-center"
-                onLoadedData={handleVideoLoad}
+                onLoadedData={handleMainVideoLoad}
             />
           </div>
 
