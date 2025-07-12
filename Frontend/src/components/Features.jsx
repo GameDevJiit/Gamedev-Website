@@ -127,7 +127,7 @@ const Features = () => {
             />
           </BentoTilt>
 
-          <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+          <div className="m-0 grid h-[120vh] w-full grid-cols-2 grid-rows-3 gap-7">
             <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
               <BentoCard
                   src="videos/feature-2.mp4"
@@ -169,31 +169,61 @@ const Features = () => {
           </div>
 
           {showMoreWork && (
-              <div className="grid h-auto w-full grid-cols-2 gap-7 mt-7 opacity-0 animate-fade-in-up"
+              <div className="grid w-full grid-cols-2 grid-auto-rows-fr gap-7 mt-7 opacity-0 animate-fade-in-up"
                    style={{
-                     animation: 'fadeInUp 0.6s ease-out forwards',
-                     animationDelay: '0.1s'
+                       animation: 'fadeInUp 0.6s ease-out forwards',
+                       animationDelay: '0.1s'
                    }}>
-                <BentoTilt className="bento-tilt_2">
-                  <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-                    <h1 className="bento-title special-font max-w-64 text-black">
-                      M<b>o</b>re to e<b>x</b>plore
-                    </h1>
+                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                      <BentoCard
+                          src="videos/Showcase/Kevin's_Kingdom.mp4"
+                          title={
+                              <>
+                                  Kevin Kingdom
+                              </>
+                          }
+                          isComingSoon = {false}
+                      />
+                  </BentoTilt>
+                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                      <BentoCard
+                          src="videos/Showcase/Crypt_Raisers.mp4"
+                          title={
+                              <>
+                                  Crypt R<b>A</b>iders
+                              </>
+                          }
+                          isComingSoon = {false}
+                      />
+                  </BentoTilt>
+                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                      <BentoCard
+                          src="videos/Showcase/render1.mp4"
+                          isComingSoon = {false}
+                      />
+                  </BentoTilt>
+                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                      <BentoCard
+                          src="videos/Showcase/render2.mp4"
+                          isComingSoon = {false}
+                      />
+                  </BentoTilt>
+                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                      <BentoCard
+                          src="videos/Showcase/render3.mp4"
+                          isComingSoon = {false}
+                      />
+                  </BentoTilt>
 
-                    <TiLocationArrow className="m-5 scale-[5] self-end" />
-                  </div>
-                </BentoTilt>
+                  <BentoTilt className="bento-tilt_2">
+                      <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
+                          <h1 className="bento-title special-font max-w-64 text-black">
+                              M<b>o</b>re to e<b>x</b>plore
+                          </h1>
 
-                <BentoTilt className="bento-tilt_2">
-                  <video
-                      src="videos/feature-5.mp4"
-                      loop
-                      muted
-                      autoPlay
-                      className="size-full object-cover object-center"
-                  />
-                </BentoTilt>
-
+                          <TiLocationArrow className="m-5 scale-[5] self-end" />
+                      </div>
+                  </BentoTilt>
               </div>
           )}
 
