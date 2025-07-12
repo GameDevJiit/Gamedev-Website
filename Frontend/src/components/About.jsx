@@ -5,22 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import AnimatedTitle from "./AnimatedTitle";
 
-//Images
-import siddant from "../assets/Members/1.png"
-import sneha from "../assets/Members/2.png"
-import riya from "../assets/Members/3.png"
-import Chitransh from "../assets/Members/4.png"
-import Ayaan from "../assets/Members/5.png"
-import Sonakshi from "../assets/Members/6.png"
-import shantanu from "../assets/Members/7.png"
-import Deyansh from "../assets/Members/8.png"
-import Priyansh from "../assets/Members/9.png"
-import Manjunath from "../assets/Members/10.png"
-import Mayank from "../assets/Members/11.png"
-import Dipanshu from "../assets/Members/16.png"
-
-//BG
-import BG from "../assets/MemberBG.png"
+import MemProfile from "./MemProfile.jsx";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -57,19 +42,19 @@ const About = () => {
 
   // Sample team data
   const teamMembers = [
-    { id: 1, name: "Shantanu Gupta", title: "HEAD", image: shantanu },
-    { id: 2, name: "Deyyansh Roy", title: "VICE HEAD", image: Deyansh },
-    { id: 3, name: "Riya Chachra", title: "CREATIVE HEAD", image: riya },
-    { id: 4, name: "Chitransh Saxena", title: "TREASURER", image: Chitransh },
-    { id: 5, name: "Aayaan", title: "MANAGEMENT HEAD", image: Ayaan },
-    { id: 6, name: "Sonakshi Singh", title: "MARKETING HEAD", image: Sonakshi },
-    { id: 7, name: "Sneha Srijaya", title: "DIGITAL HEAD", image: sneha },
-    { id: 8, name: "Siddhant Jain", title: "DIGITAL HEAD", image: siddant },
-    { id: 9, name: "Priyansh", title: "TECHNICAL HEAD", image: Priyansh },
-    { id: 10, name: "Mayank Varshney", title: "SECRETARY", image: Mayank },
-    { id: 11, name: "Dipanshu Sharma", title: "MANAGEMENT HEAD", image: Dipanshu },
-    { id: 12, name: "Manjunath", title: "CINEMATOGRAPHY HEAD", image: Manjunath },
-    { id: 13, name: "Dev", title: "CINEMATOGRAPHY HEAD", image: "/img/team/dev.jpg" }
+    { id: 1, name: "Shantanu", title: "HEAD", image: 7 },
+    { id: 2, name: "Devyansh", title: "VICE HEAD", image: 8 },
+    { id: 3, name: "Riya", title: "CREATIVE HEAD", image: 3 },
+    { id: 4, name: "Chitransh", title: "TREASURER", image: 4 },
+    { id: 5, name: "Aayaan", title: "MANAGEMENT HEAD", image: 5 },
+    { id: 6, name: "Sonakshi", title: "MARKETING HEAD", image: 6 },
+    { id: 7, name: "Sneha", title: "DIGITAL HEAD", image: 2 },
+    { id: 8, name: "Siddhant", title: "DIGITAL HEAD", image: 1 },
+    { id: 9, name: "Priyansh", title: "TECHNICAL HEAD", image: 9 },
+    { id: 10, name: "Mayank", title: "SECRETARY", image: 11 },
+    { id: 11, name: "Dipanshu", title: "MANAGEMENT HEAD", image: 12 },
+    { id: 12, name: "Manjunath", title: "CINEMATOGRAPHY HEAD", image: 10 },
+    { id: 13, name: "Dev", title: "CINEMATOGRAPHY HEAD", image: 13 }
   ];
 
   // Animation variants
@@ -80,53 +65,6 @@ const About = () => {
       transition: {
         delayChildren: 0.2,
         staggerChildren: 0.08
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.8,
-      y: 50
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 20,
-        stiffness: 100
-      }
-    }
-  };
-
-  const floatingVariants = {
-    float: {
-      y: [-8, 8, -8],
-      rotate: [-1, 1, -1],
-      transition: {
-        duration: 3 + Math.random() * 2,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: Math.random() * 2
-      }
-    },
-    static: {
-      y: 0,
-      rotate: 0
-    }
-  };
-
-  const hoverVariants = {
-    hover: {
-      scale: 1.05,
-      y: -5,
-      transition: {
-        type: "spring",
-        damping: 15,
-        stiffness: 300
       }
     }
   };
@@ -154,112 +92,112 @@ const About = () => {
 
         <div className="h-dvh w-screen" id="clip">
           <div className="mask-clip-path about-image">
-            {/* Background with gradient */}
-            <div
-                className="absolute left-0 top-0 size-full bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${BG})` }}
-            >
-              {/* Animated background elements */}
-              <div className="absolute inset-0 bg-black/20">
-                <motion.div
-                    className="absolute top-10 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0.6, 0.3],
-                      x: [0, 20, 0],
-                      y: [0, -10, 0]
-                    }}
-                    transition={{
-                      duration: 6,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
+            <div className="h-dvh w-screen" id="clip">
+              <div className="mask-clip-path about-image">
+                {/* Background video */}
+                <video
+                    className="absolute left-0 top-0 z-[-10] h-full w-full object-cover"
+                    src={"videos/MBGVideo.mp4"}
+                    autoPlay
+                    loop
+                    muted
                 />
-                <motion.div
-                    className="absolute bottom-20 right-20 w-48 h-48 bg-purple-500/20 rounded-full blur-xl"
-                    animate={{
-                      scale: [1, 1.3, 1],
-                      opacity: [0.2, 0.5, 0.2],
-                      x: [0, -30, 0],
-                      y: [0, 15, 0]
-                    }}
-                    transition={{
-                      duration: 8,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 1
-                    }}
-                />
-                <motion.div
-                    className="absolute top-1/2 left-1/4 w-24 h-24 bg-pink-500/20 rounded-full blur-xl"
-                    animate={{
-                      scale: [1, 1.1, 1],
-                      opacity: [0.4, 0.7, 0.4],
-                      x: [0, 25, 0],
-                      y: [0, -20, 0]
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 0.5
-                    }}
-                />
-              </div>
 
-              {/* Team Members Grid */}
-              <motion.div
-                  className="absolute inset-0 flex items-center justify-center p-8"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate={isExpanded ? "visible" : "hidden"}
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl w-full">
-                  <AnimatePresence>
-                    {teamMembers.map((member, index) => (
-                        <motion.div
-                            key={member.id}
-                            className="team-card bg-white/15 backdrop-blur-md rounded-xl p-6 text-center border border-white/20 shadow-lg cursor-pointer"
-                            variants={cardVariants}
-                            animate={isExpanded ? ["visible", "float"] : "hidden"}
-                            whileHover="hover"
-                            custom={index}
-                        >
-                          <motion.div variants={floatingVariants}>
-                            <motion.div variants={hoverVariants}>
-                              {/* Avatar */}
-                              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 flex items-center justify-center p-0.5">
-                                <div className="w-full h-full rounded-full overflow-hidden bg-white/10">
-                                  <img
-                                      src={member.image}
-                                      alt={member.name}
-                                      className="w-full h-full object-cover"
-                                      onError={(e) => {
-                                        e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=80&background=6366f1&color=fff&bold=true`;
-                                      }}
-                                  />
-                                </div>
-                              </div>
 
-                              {/* Name */}
-                              <h3 className="text-white font-bold text-base mb-2 tracking-wide">
-                                {member.name}
-                              </h3>
-
-                              {/* Title */}
-                              <p className="text-blue-200 text-sm font-medium">
-                                {member.title}
-                              </p>
-
-                              {/* Decorative line */}
-                              <div className="mt-3 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
-                            </motion.div>
-                          </motion.div>
-                        </motion.div>
-                    ))}
-                  </AnimatePresence>
+                {/* Animated background elements */}
+                <div className="absolute inset-0 bg-black/20">
+                  <motion.div
+                      className="absolute top-10 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.3, 0.6, 0.3],
+                        x: [0, 20, 0],
+                        y: [0, -10, 0]
+                      }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                  />
+                  <motion.div
+                      className="absolute bottom-20 right-20 w-48 h-48 bg-purple-500/20 rounded-full blur-xl"
+                      animate={{
+                        scale: [1, 1.3, 1],
+                        opacity: [0.2, 0.5, 0.2],
+                        x: [0, -30, 0],
+                        y: [0, 15, 0]
+                      }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1
+                      }}
+                  />
+                  <motion.div
+                      className="absolute top-1/2 left-1/4 w-24 h-24 bg-pink-500/20 rounded-full blur-xl"
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [0.4, 0.7, 0.4],
+                        x: [0, 25, 0],
+                        y: [0, -20, 0]
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5
+                      }}
+                  />
                 </div>
-              </motion.div>
+
+                {/* Team Members Grid */}
+                <motion.div
+                    className="absolute inset-0 flex items-center justify-center p-4"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={isExpanded ? "visible" : "hidden"}
+                >
+                  <div className="w-full p-0">
+                    <AnimatePresence>
+                      <div className="flex w-full justify-center">
+                        <div className="w-full max-w-6xl px-4">
+                          <AnimatePresence className="w-full">
+                            {/* First row - Single centered item */}
+                            <div className="mb-4 flex justify-center">
+                              <div className="w-full max-w-xs">
+                                <MemProfile
+                                    name={teamMembers[0].name}
+                                    title={teamMembers[0].title}
+                                    imgIdx={teamMembers[0].image}
+                                    key={teamMembers[0].id}
+                                    className="h-32"
+                                />
+                              </div>
+                            </div>
+
+                            {/* Grid Section */}
+                            <div className="grid grid-cols-6 gap-y-10 gap-x-12 w-full">
+                              {teamMembers.slice(1).map((member, index) => (
+                                  <div key={member.id} className="w-full">
+                                    <MemProfile
+                                        name={member.name}
+                                        title={member.title}
+                                        imgIdx={member.image}
+                                        key={index}
+                                        className="h-32"
+                                    />
+                                  </div>
+                              ))}
+                            </div>
+                          </AnimatePresence>
+                        </div>
+                      </div>
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
