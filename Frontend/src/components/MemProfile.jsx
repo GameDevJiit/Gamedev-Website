@@ -3,19 +3,19 @@ import PropTypes from "prop-types";
 
 // Images - using public directory URLs instead of imports
 const Images = [
-    "/img/Members/1.png",   // siddant
-    "/img/Members/2.png",   // sneha
-    "/img/Members/3.png",   // riya
-    "/img/Members/4.png",   // Chitransh
-    "/img/Members/5.png",   // Ayaan
-    "/img/Members/6.png",   // Sonakshi
-    "/img/Members/7.png",   // shantanu
-    "/img/Members/8.png",   // Deyansh
-    "/img/Members/9.png",   // Priyansh
-    "/img/Members/10.png",  // Manjunath
-    "/img/Members/11.png",  // Mayank
-    "/img/Members/16.png",  // Dipanshu
-    "/img/Members/17.png"   // Dev
+    "/img/Members/1.webp",   // siddant
+    "/img/Members/2.webp",   // sneha
+    "/img/Members/3.webp",   // riya
+    "/img/Members/4.webp",   // Chitransh
+    "/img/Members/5.webp",   // Ayaan
+    "/img/Members/6.webp",   // Sonakshi
+    "/img/Members/7.webp",   // shantanu
+    "/img/Members/8.webp",   // Deyansh
+    "/img/Members/9.webp",   // Priyansh
+    "/img/Members/10.webp",  // Manjunath
+    "/img/Members/11.webp",  // Mayank
+    "/img/Members/16.webp",  // Dipanshu
+    "/img/Members/17.webp"   // Dev
 ];
 {/* eslint-disable tailwindcss/no-custom-classname */}
 const Card = ({imgIdx , name , title}) => {
