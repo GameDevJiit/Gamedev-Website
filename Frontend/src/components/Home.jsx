@@ -15,61 +15,26 @@ const Home = () => {
 
   const [loading, setLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
-  const [mainVideoLoaded, setMainVideoLoaded] = useState(false);
-  const [allVideosLoaded, setAllVideosLoaded] = useState(false);
   const [showNoRecruits, setShowNoRecruits] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   const totalVideos = 4;
   const nextVdRef = useRef(null);
-
-  // Check if device is mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      const isSmallScreen = window.innerWidth <= 768;
-
-      setIsMobile(mobileRegex.test(userAgent) || isTouchDevice || isSmallScreen);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1);
   };
 
-  const handleMainVideoLoad = () => {
-    setMainVideoLoaded(true);
-    setLoadedVideos((prev) => prev + 1);
-  };
-
-  // Hide loading screen when main video is loaded
   useEffect(() => {
-    if (mainVideoLoaded) {
+    if (loadedVideos === totalVideos - 1) {
       setLoading(false);
-    }
-  }, [mainVideoLoaded]);
-
-  // Track when all videos are loaded for mini player
-  useEffect(() => {
-    if (loadedVideos === totalVideos) {
-      setAllVideosLoaded(true);
     }
   }, [loadedVideos]);
 
   const handleMiniVdClick = () => {
-    // Only allow clicks if not on mobile AND all videos are loaded
-    if (!isMobile && allVideosLoaded) {
-      setHasClicked(true);
-      setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
-    }
+    setHasClicked(true);
+
+    setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
   };
 
   //Join Us
@@ -92,7 +57,7 @@ const Home = () => {
 
   useGSAP(
       () => {
-        if (hasClicked && !isMobile && allVideosLoaded) {
+        if (hasClicked) {
           gsap.set("#next-video", { visibility: "visible" });
           gsap.to("#next-video", {
             transformOrigin: "center center",
@@ -112,7 +77,7 @@ const Home = () => {
         }
       },
       {
-        dependencies: [currentIndex, isMobile, allVideosLoaded],
+        dependencies: [currentIndex],
         revertOnUpdate: true,
       }
   );
@@ -175,29 +140,24 @@ const Home = () => {
             className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
         >
           <div>
-            {/* Mini player - only render on desktop and when all videos are loaded */}
-            {!isMobile && (
-                <div className={`mask-clip-path absolute-center absolute z-50 size-64 overflow-hidden rounded-lg 
-                  ${allVideosLoaded ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}>
-                  <VideoPreview>
-                    <div
-                        onClick={handleMiniVdClick}
-                        className={`origin-center scale-50 opacity-0 transition-all duration-500 ease-in 
-                          ${allVideosLoaded ? 'hover:scale-100 hover:opacity-100' : ''}`}
-                    >
-                      <video
-                          ref={nextVdRef}
-                          src={getVideoSrc((currentIndex % totalVideos) + 1)}
-                          loop
-                          muted
-                          id="current-video"
-                          className="size-64 origin-center scale-150 object-cover object-center"
-                          onLoadedData={handleVideoLoad}
-                      />
-                    </div>
-                  </VideoPreview>
+            <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
+              <VideoPreview>
+                <div
+                    onClick={handleMiniVdClick}
+                    className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
+                >
+                  <video
+                      ref={nextVdRef}
+                      src={getVideoSrc((currentIndex % totalVideos) + 1)}
+                      loop
+                      muted
+                      id="current-video"
+                      className="size-64 origin-center scale-150 object-cover object-center"
+                      onLoadedData={handleVideoLoad}
+                  />
                 </div>
-            )}
+              </VideoPreview>
+            </div>
 
             <video
                 ref={nextVdRef}
@@ -216,7 +176,7 @@ const Home = () => {
                 loop
                 muted
                 className="absolute left-0 top-0 size-full object-cover object-center"
-                onLoadedData={handleMainVideoLoad}
+                onLoadedData={handleVideoLoad}
             />
           </div>
 
