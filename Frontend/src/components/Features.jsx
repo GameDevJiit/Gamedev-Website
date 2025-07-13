@@ -174,7 +174,7 @@ const Features = () => {
                        animation: 'fadeInUp 0.6s ease-out forwards',
                        animationDelay: '0.1s'
                    }}>
-                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                  <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0 min-h-72">
                       <BentoCard
                           src="videos/Showcase/Kevin's_Kingdom.mp4"
                           title={
@@ -185,7 +185,7 @@ const Features = () => {
                           isComingSoon = {false}
                       />
                   </BentoTilt>
-                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-72">
                       <BentoCard
                           src="videos/Showcase/Crypt_Raisers.mp4"
                           title={
@@ -196,19 +196,19 @@ const Features = () => {
                           isComingSoon = {false}
                       />
                   </BentoTilt>
-                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                  <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0 min-h-72">
                       <BentoCard
                           src="videos/Showcase/render1.mp4"
                           isComingSoon = {false}
                       />
                   </BentoTilt>
-                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-72">
                       <BentoCard
                           src="videos/Showcase/render2.mp4"
                           isComingSoon = {false}
                       />
                   </BentoTilt>
-                  <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 min-h-96">
+                  <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0 min-h-72">
                       <BentoCard
                           src="videos/Showcase/render3.mp4"
                           isComingSoon = {false}
