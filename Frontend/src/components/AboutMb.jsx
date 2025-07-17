@@ -262,7 +262,7 @@ const About = () => {
 
                     <div className="flex items-center justify-center gap-4 text-sm font-mono" style={{ color: 'hsl(240, 4%, 46%)' }}>
                         <span>[STATUS: ONLINE]</span>
-                        <span>[PLAYERS: {guildMembers.length + 1}]</span>
+                        <span>[PLAYERS: 30+]</span>
                         <span>[MODE: CREATIVE]</span>
                     </div>
                 </div>
@@ -481,7 +481,7 @@ const About = () => {
                                 }}
                             >
                                 <div className="text-2xl font-bold" style={{ color: 'rgb(59, 130, 246)' }}>
-                                    {guildMembers.length + 1}
+                                    30+
                                 </div>
                                 <div className="text-sm font-mono" style={{ color: 'hsl(240, 4%, 46%)' }}>
                                     GUILD_SIZE

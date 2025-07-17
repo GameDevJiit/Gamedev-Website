@@ -114,23 +114,28 @@ const Home = () => {
 
         {/* No Recruits Message */}
         {showNoRecruits && (
-            <div className={`fixed inset-x-0 bottom-5 z-[200] flex w-screen items-center justify-center overflow-x-hidden
-             transition-all duration-500 ease-in-out transform
-             ${isAnimatingOut
-                ? 'translate-y-20 scale-95 opacity-0'
-                : 'translate-y-0 scale-100 opacity-100'
-            }`}
+            <div
+                className={`fixed inset-x-0 bottom-5 z-[200] flex w-screen items-center justify-center overflow-x-hidden
+    transition-all duration-500 ease-in-out transform
+    ${
+                    isAnimatingOut
+                        ? 'translate-y-20 scale-95 opacity-0'
+                        : 'translate-y-0 scale-100 opacity-100'
+                }`}
             >
-              <div className={`h-auto w-1/5 rounded-full bg-red-500 py-4 text-center font-bold text-white 
-                transition-all duration-500 ease-in-out transform
-                ${isAnimatingOut
-                  ? 'scale-90 opacity-0'
-                  : 'scale-100 opacity-90'
-              }`}
+              <div
+                  className={`h-auto w-11/12 sm:w-4/5 md:w-2/5 lg:w-1/4 xl:w-1/5 rounded-full bg-red-500 py-4 text-center font-bold text-white
+      transition-all duration-500 ease-in-out transform
+      ${
+                      isAnimatingOut
+                          ? 'scale-90 opacity-0'
+                          : 'scale-100 opacity-90'
+                  }`}
               >
                 No recruits are open right now
               </div>
             </div>
+
         )}
       </div>
   );

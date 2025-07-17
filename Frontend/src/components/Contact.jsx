@@ -73,10 +73,10 @@ const Contact = () => {
                 Ready to Join Forces?
               </p>
               <div className="space-y-2">
-                <p className="text-lg font-semibold text-white hover:text-purple-300 transition-colors duration-300">
-                  multimedia.development.jiit@gmail.com
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-white hover:text-purple-300 transition-colors duration-300">
+                multimedia.development.jiit@gmail.com
                 </p>
-                <p className="text-lg font-semibold text-white hover:text-cyan-300 transition-colors duration-300">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-white hover:text-cyan-300 transition-colors duration-300">
                   shantanugupta.cy80@gmail.com
                 </p>
               </div>
