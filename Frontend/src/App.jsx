@@ -7,6 +7,7 @@ import Story from "./components/Event.jsx";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AboutMb from "./components/AboutMb.jsx";
+import constants from "../constants.js";
 
 function App() {
     const [isMobile, setIsMobile] = useState(false);
@@ -26,7 +27,7 @@ function App() {
             <Home />
             {isMobile ? <AboutMb /> : <About />}
             <Features />
-            <Story />
+            {constants.isEventOn && <Story/>}
             <Contact />
             <Footer />
         </main>
